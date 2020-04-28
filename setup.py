@@ -4,7 +4,7 @@ setup(
     # 배포할 패키지의 이름을 적어줍니다. setup.py파일을 가지는 폴더 이름과 동일하게 합니다.
     name                = 'ksbox',
     # 배포할 패키지의 버전을 적어줍니다. 첫 등록이므로 0.1 또는 0.0.1을 사용합니다.
-    version             = '0.2',
+    version             = '0.3',
     # 배포할 패키지에 대한 설명을 작성합니다.
     description         = '3,4,5,8-sbox module ddt,lat,1-1, 1-2, 2-1 ddt & lat',
     # 배포하는 사람의 이름을 작성합니다.
@@ -17,7 +17,7 @@ setup(
     download_url        = 'https://github.com/gy10040412/ksbox/archive/master.zip',
     # 해당 패키지를 사용하기 위해 필요한 패키지를 적어줍니다. ex. install_requires= ['numpy', 'django']
     # 여기에 적어준 패키지는 현재 패키지를 install할때 함께 install됩니다.
-    install_requires    =  ['copy','colorama','time','numpy','os','math'],
+    install_requires    =  ['colorama','numpy','os','math'],
 
     # 등록하고자 하는 패키지를 적는 곳입니다.
     # 우리는 find_packages 라이브러리를 이용하기 때문에 아래와 같이 적어줍니다.
