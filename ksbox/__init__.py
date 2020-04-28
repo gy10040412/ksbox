@@ -96,6 +96,45 @@ def make_lat(s):
                         
     return lat
 
+def fmake_ddt(fs):
+    s=convert(fs)
+    size=len(s)
+    ddt=[ [0 for i in range(size)] for j in range(size) ]
+    for i in range(size):
+        for j in range(size):
+            ddt[i^j][s[i]^s[j]]+=1
+    return ddt
+
+def fmake_lat(fs):
+    
+    bsize=len(fs)
+    size=bsize*bsize
+    tsize=2**(bsize-1)
+    
+    init_s = sin[bsize][0]
+    va=sin[bsize][1]
+    s_in = sin[bsize][2]
+    
+    lat = [ [0 for i in range(size)] for j in range(size) ]
+    
+    tmp=s_in[0]^fs[0]
+    
+    for i in range(tsize):
+        for j in range(tsize):
+            valA2 = 0
+            for k in range(1,bsize):
+                valA2^=(fs[k]*init_s[j][k])
+
+            valA3 = va[i]^valA2
+            
+            lat[i][j]=abs(bin(valA3).count('1') - tsize)
+            lat[i|tsize][j]= abs(bin( valA3 ^ s_in[0]).count('1') - tsize)
+            lat[i][j|tsize]=abs(bin(valA3 ^ fs[0]).count('1') - tsize)
+            lat[i|tsize][j|tsize]=abs(bin(valA3^tmp).count('1') - tsize)
+                        
+    return lat
+
+
 def table_max(table):
     tlen=len(table)
     return max([max(table[i]) for i in range(1,tlen)])
