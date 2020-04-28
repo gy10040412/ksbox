@@ -97,7 +97,7 @@ def make_lat(s):
     return lat
 
 def fmake_ddt(fs):
-    s=convert(fs)
+    s=convert(fs,False)
     size=len(s)
     ddt=[ [0 for i in range(size)] for j in range(size) ]
     for i in range(size):
