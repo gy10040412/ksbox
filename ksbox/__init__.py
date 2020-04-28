@@ -108,7 +108,7 @@ def fmake_ddt(fs):
 def fmake_lat(fs):
     
     bsize=len(fs)
-    size=bsize*bsize
+    size=2**bsize
     tsize=2**(bsize-1)
     
     init_s = sin[bsize][0]
