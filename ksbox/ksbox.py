@@ -1,9 +1,32 @@
+'''
+ksbox.help()
+'''
 import copy
 from colorama import init
 import time 
 import numpy as np
 import os
 import math
+
+def help():
+    print("""function list
+convert(sbox, True(default)) -> return flat_sbox
+convert(flat_sbox, False) -> return sbox
+
+make_ddt(sbox) -> return ddt
+fmake_ddt(flat_sbox) -> return ddt
+
+make_lat(sbox) -> return lat
+fmake_lat(flat_sbox) -> return lat
+
+table_max(table) -> return max(table[1~table_size][0 ~ table_size])
+table_num_count(table, num) -> return count(table[0 ~ table_size][0 ~ table_size], num)
+
+view_11(table) -> view 1-1 table
+view_12(table) -> view 1-2 table
+view_21(table) -> view 2-1 table
+    """)
+
 init()
 C_END     = "\033[0m"
 C_BOLD    = "\033[1m"
@@ -147,10 +170,17 @@ def table_num_count(table,num):
 
 
 def view_11(t):
-    print("")
-    one=[1,2,4,8,16,32,64,128]
-    for i in range(8):
-        for j in range(8):
+    tsize=len(t)
+
+    one=[]
+    for i in [1,2,4,8,16,32,64,128]:
+        if i<tsize:
+            one.append(i)
+        else:
+            break
+
+    for i in one:
+        for j in one:
             if (t[i][j]!=0):
                 if (t[i][j]>=16):
                     print(C_CYAN+"{:02d} ".format(t[i][j])+C_END,end='')
@@ -239,3 +269,4 @@ def view_21(t): # 2-1
                 print("{:02d} ".format(t[i][j]),end='')
         print('')
     print("")
+
