@@ -270,3 +270,38 @@ def view_21(t): # 2-1
         print('')
     print("")
 
+
+def view_22(t): # 2-1
+    tsize=len(t)
+
+
+    two=[]
+    for i in [3,5,6,9,10,12,17,18,20,24,33,34,36,40,48,65,66,68,72,80,96,129,130,132,136,144,160,192]:
+        if i<tsize:
+            two.append(i)
+        else:
+            break
+    supermax=table_max(t)
+    hmax=supermax>>1
+    print(C_GREEN+"   0x"+C_END,end="")
+    for i in two:
+        print (C_GREEN+"{:02X} ".format(i)+C_END,end="")
+    print("")
+    
+    for j in two:
+        print (C_GREEN+"0x{:02X} ".format(j)+C_END,end="")
+        for i in two:
+            
+            if(t[j][i]!=0):
+                if(t[j][i]>=hmax):
+                    if(t[j][i]==supermax):
+                        print(C_RED+"{:02d} ".format(t[j][i])+C_END,end='')
+                    else:
+                        print(C_CYAN+"{:02d} ".format(t[j][i])+C_END,end='')
+                else:
+                    print(C_YELLOW+"{:02d} ".format(t[j][i])+C_END,end='')
+            else:
+                print("{:02d} ".format(t[j][i]),end='')
+        print('')
+    print("")
+
