@@ -257,16 +257,16 @@ def view_21(t): # 2-1
         print (C_GREEN+"0x{:02X} ".format(j)+C_END,end="")
         for i in one:
             
-            if(t[i][j]!=0):
-                if(t[i][j]>=hmax):
-                    if(t[i][j]==supermax):
-                        print(C_RED+"{:02d} ".format(t[i][j])+C_END,end='')
+            if(t[j][i]!=0):
+                if(t[j][i]>=hmax):
+                    if(t[j][i]==supermax):
+                        print(C_RED+"{:02d} ".format(t[j][i])+C_END,end='')
                     else:
-                        print(C_CYAN+"{:02d} ".format(t[i][j])+C_END,end='')
+                        print(C_CYAN+"{:02d} ".format(t[j][i])+C_END,end='')
                 else:
-                    print(C_YELLOW+"{:02d} ".format(t[i][j])+C_END,end='')
+                    print(C_YELLOW+"{:02d} ".format(t[j][i])+C_END,end='')
             else:
-                print("{:02d} ".format(t[i][j]),end='')
+                print("{:02d} ".format(t[j][i]),end='')
         print('')
     print("")
 
