@@ -22,6 +22,9 @@ fmake_lat(flat_sbox) -> return lat
 table_max(table) -> return max(table[1~table_size][0 ~ table_size])
 table_num_count(table, num) -> return count(table[0 ~ table_size][0 ~ table_size], num)
 
+count_fixed(sbox) -> count fixed point
+check_bn(table) -> BN check (<5)
+
 view_11(table) -> view 1-1 table
 view_12(table) -> view 1-2 table
 view_21(table) -> view 2-1 table
@@ -305,3 +308,39 @@ def view_22(t): # 2-1
         print('')
     print("")
 
+
+def count_fixed(s):
+    size=len(s)
+    count=0
+    for i in range(size):
+        if i==s[i]:
+            count=count+1
+    return count
+
+def check_BN(t):#BN check 2,3 (or 4<)
+    tsize=len(t)
+    one=[]
+    BN=0
+    
+    for i in [1,2,4,8,16,32,64,128]:
+        if i<tsize:
+            one.append(i)
+        else:
+            break
+    for i in one:
+        for j in one:
+            if (t[i][j]!=0):
+                return 2#BN2
+    
+    two=[]
+    for i in [3,5,6,9,10,12,17,18,20,24,33,34,36,40,48,65,66,68,72,80,96,129,130,132,136,144,160,192]:
+        if i<tsize:
+            two.append(i)
+        else:
+            break
+    for i in one:
+        for j in two:
+            if (t[i][j]!=0) or (t[j][i]!=0):
+                return 3#BN3
+        
+    return 4#BN4
