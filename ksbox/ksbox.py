@@ -61,10 +61,10 @@ def sinfo(s):
 
     fixed=count_fixed(s)
     ddt=make_ddt(s)
-    dbn=check_bn(ddt)
+    dbn=check_BN(ddt)
     dm=table_max(ddt)
     lat=make_lat(s)
-    lbn=check_bn(lat)
+    lbn=check_BN(lat)
     lm=table_max(lat)
     print ("{}-bit s box  diff:{}  linear:{}  dbn:{}  lbn:{}  fixed:{}".format(bsize,dm,lm,dbn,lbn,fixed))
     
