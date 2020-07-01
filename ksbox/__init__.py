@@ -61,10 +61,10 @@ def sinfo(s):
 
     fixed=count_fixed(s)
     ddt=make_ddt(s)
-    dbn=check_bn(ddt)
+    dbn=check_BN(ddt)
     dm=table_max(ddt)
     lat=make_lat(s)
-    lbn=check_bn(lat)
+    lbn=check_BN(lat)
     lm=table_max(lat)
     print ("{}-bit s box  diff:{}  linear:{}  dbn:{}  lbn:{}  fixed:{}".format(bsize,dm,lm,dbn,lbn,fixed))
     
@@ -184,10 +184,21 @@ def fmake_lat(fs):
                         
     return lat
 
-
+def original_LAT(s):
+    n=len(s)
+    LAT = [[-int(2**n/2) for i in range(2**n)] for j in range(2**n)]
+    for i in range(2**n):
+        for j in range(2**n):
+            for x in range(2**n):
+                LAT[i][j] += bin((i&x)^(j&S[x])).count('1')%2
+    return LAT
+    
 def table_max(table):
     tlen=len(table)
-    return max([max(table[i]) for i in range(1,tlen)])
+    
+    t=[max(table[0][1:])]+[max(table[i]) for i in range(1,tlen)]
+    
+    return max(t)
 
 def table_num_count(table,num):
     x=0
